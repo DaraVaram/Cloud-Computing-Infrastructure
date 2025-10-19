@@ -99,8 +99,30 @@ They specify the services and capabilities that are provided to the consumers. T
 
 | Service | Description | Figure |
 | ------- | ----------- | ------ | 
-| IaaS | The capability provided to the consumer is to provision processing, storage, networks, and other fundamental computing resources where the consumer is able to deploy and run arbitrary software, which can include operating systems and applications. The consumer does not manage or control the underlying cloud infrastructure but has control over operating systems, storage, and deployed applications; and possibly limited control of select networking components (e.g., host firewalls). | <img src="https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/IaaS.png?raw=true" width="8000"/> |
+| IaaS | The capability provided to the consumer is to provision processing, storage, networks, and other fundamental computing resources where the consumer is able to deploy and run arbitrary software, which can include operating systems and applications. The **consumer does not manage or control the underlying cloud infrastructure** but has **control over operating systems, storage, and deployed applications**; and possibly limited control of select networking components (e.g., host firewalls). <ul> <li> Computational resources are provided to the consumers</li> <li> You have the freedom to do **whatever you want** (there's some limits to this, like virtualization in a system)</li></ul> | <img src="https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/IaaS.png?raw=true" width="8000"/> |
+|PaaS | The capability provided to the consumer is to deploy onto the cloud infrastructure consumer-created or acquired applications created using programming languages, libraries, services, and tools supported by the provider. The **consumer does not manage or control the underlying cloud infrastructure including network, servers, operating systems, or storage**, but has control over the **deployed applications** and possibly configuration settings for the application-hosting environment. <ul> <li>Basically, you can only create your application and deploy your application. </li> <li>The provider masks the installation details, but you can request for them </li></ul>|<img src="https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/PaaS.png?raw=true" width="8000"/> |
+|SaaS | The capability provided to the consumer is to **use the provider’s applications running on a cloud infrastructure**. The applications are accessible from various client devices through either a **thin client interface**, such as a web browser, (e.g., web-based email, or a program interface. The consumer does not manage or control the underlying cloud infrastructure including network, servers, operating systems, storage, or even individual application capabilities, with the possible exception of limited user-specific application configuration settings. <ul> <li>We cannot create or deploy apps, we only have access to use the applicationso themselves (like Google Drive, Gmail, these guys) </li></ul>| <img src="https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/SaaS.png?raw=true" width="8000"/> |
 
+
+### Cloud Services Brokerage (CSB)
+Cloud services brokerage (CSB) is an IT role and business model in which a company or other entity adds value to one or more (public or private) cloud services on behalf of one or more consumers of that service.
+
+What does that even mean?
+- CSB is provided by a cloud broker: an entity that acts like an intermediary between cloud consumers and providers.
+- This broker manages the use, performance and delivery of cloud services.
+- The broker has the knowledge of different cloud services provided by different providers. They basically play as a matchmaker between consumers and providers, based on their cost and necessity.
+- Standardization: prevents getting locked into a specific provider, lateral movement is easier for the consumers.
+- Brokers provide an interface / API to access / create services.
+- Through brokers, we can aggregate multiple cloud services from different providers to handle your workload. Aggregate: integrate between multiple providers.
+
+### Cloud Deployment Models
+A cloud deployment model specifies how a cloud infrastructure is built, managed and accessed. There are 4 primary cloud deployment models: 
+- Public
+- Private
+- Community
+- Hybrid
+
+It's possible that governance constraints may influence your decision for cloud deployment. For example, General Data Protection Regulation (GDPR) in the EU. 
 
 
 
