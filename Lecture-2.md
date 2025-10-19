@@ -1,4 +1,4 @@
-# Fundamentals in Building the Cloud Infrastructure
+# Lecture 2: Fundamentals in Building the Cloud Infrastructure
 
 Recall the definition of Cloud Computing: 
 
