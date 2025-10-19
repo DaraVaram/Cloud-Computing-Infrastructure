@@ -80,5 +80,24 @@ Let's go into the details of each one of these.
 | Business Continuity | <ul><li> Reduces impact of downtime (because on high availability) </li><li> Example: cloud-based backups (if you lose the data locally, you can still get it back from the cloud). </li> </ul> |
 | Flexible Scaling | <ul><li> Enables scaling of resources to meet the demand </li><li> Unilateral* and automatic resource scaling </li> </ul> |
 | Flexibility of Access | <ul><li> Enables access to services from **anywhere**</li><li> Eliminates dependency on a **specific** end-point device. You can access it from anywhere, regardless of the device.  </li> </ul> |
+| Application Development and Testing | <ul><li> Better scalability for application development and testing, doing so on multiple platforms as well. </li> </ul> |
+| Simplified Infrastructure Management | <ul><li> Consumers manage only those resources that are required to access cloud services, nothing else. </li> </ul> |
+| Increased Collaboration | <ul><li> Enables sharing and simultaneous access of **resources** and **information**. </li> </ul> |
+| **Masked** Complexity | <ul><li> The _intricacies_  of IT operations are hidden from the clients / end-users. They are only on the cloud back-end. </li> </ul> |
 
 *Unilateral: The user doesn't need to communicate to the provider at all. It's self-service at the end of the day.
+
+## Cloud Service Models and Cloud Services Brokerage
+Here, we cover the following: 
+- Infrastructure as a service (IaaS)
+- Platform as a service (PaaS)
+- Software as a service (SaaS)
+- Cloud services brokerage
+
+### What are Cloud Service Models?
+They specify the services and capabilities that are provided to the consumers. There are three primary cloud service models: IaaS, PaaS, and SaaS. 
+
+
+
+
+
