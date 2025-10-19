@@ -1,4 +1,4 @@
-# Introduction to Cloud Computing
+# Lecture 1: Introduction to Cloud Computing
 Cloud Computing works with **distributed systems**. 
 
 Classical Computing: 
