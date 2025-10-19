@@ -175,6 +175,24 @@ There are two solutions for building cloud infrastructure:
     - Checking compatibility of all components
 - Enables organizations to choose and switch vendors easily
 
-It's doable, but not straightforward (According to Ariel's notes). 
+It's doable, but not straightforward (According to Ariel's notes). You pick each component / service from the vendor you like best and integrate them yourself. This maximizes choice and specialization, but you have to do the setup yourself. For example, if you want to build a private cloud. Why would you choose this method?
+- Flexibility and avoiding lock-in: You can swap components, negotiate pricing, etc...
+- Specialize performance / features. You can pick the best of whatever you want for your use-case.
 
 2. Cloud-ready converged infrastructure
+![CloudReady](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/CloudReady.png)
+
+You buy a pre-validated stack that bundles compute, storage, networking and management as **one fully-engineered system**. You have less freedom, but at the same time much more convenience since you don't have to set up and patch things together yourself. Quicker deployment, this-just-works guarantee, etc...
+- Keep in mind that if you go with this, you'd have to get it from one single vendor. You can't mix and match there, so there's a potential issue with vendor lock-in.
+
+## Service-level Agreement (SLA) and Legal Contract
+Definition: A **contract** negotiated between a **provider** and a **consumer** that specifies various parameters and metrics such as **cost**, **service availability**, maintenance schedules, **performance levels**, service desk response time, and consumer's and provider's responsibilities.
+
+There are certain key things that **need to be included** in a legal contract: 
+- Business-level policies such as **data privacy**, **data ownership**, **security** and **jurisdiction**.
+- Availability and performance metrics
+- Disaster recovery plans, exit plans, and penalties for not meeting SLA
+- How unexpected incidents and potentially prolonged service outage will be handled.
+
+
+
