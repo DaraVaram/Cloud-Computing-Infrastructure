@@ -97,6 +97,10 @@ Here, we cover the following:
 ### What are Cloud Service Models?
 They specify the services and capabilities that are provided to the consumers. There are three primary cloud service models: IaaS, PaaS, and SaaS. 
 
+| Service | Description | Figure |
+| ------- | ----------- | ------ | 
+| IaaS | The capability provided to the consumer is to provision processing, storage, networks, and other fundamental computing resources where the consumer is able to deploy and run arbitrary software, which can include operating systems and applications. The consumer does not manage or control the underlying cloud infrastructure but has control over operating systems, storage, and deployed applications; and possibly limited control of select networking components (e.g., host firewalls). | <img src="https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/IaaS.png?raw=true" width="8000"/> |
+
 
 
 
