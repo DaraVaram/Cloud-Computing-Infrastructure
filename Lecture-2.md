@@ -63,4 +63,22 @@ Scalability can be measured along at least 3 dimensions:
 - **Administrative**: Can still be easily managed, even if it spans many independent administrative organizations. Cloud provider (many organizations), or multiple cloud providers together, or multiple data centers by a _single_ provider.
 
 ## Cloud Infrastructure Reference Model
-![]()
+Definition: A **reference model** is an **abstract** framework for understanding **significant relationships** among the entities of some environment, and for the development of consistent **standards or specifications** supporting that environment. It is based on a small number of unifying concepts and may be used as a basis for **education** and **explaining standards**. It is **not directly tied** to any **standards**, **technologies**, or other concrete **implementation** details, but it does seek to provide a common semantics that can be used unambiguously across and between different implementations.
+
+- It facilitates efficient communication of system details between stakeholders
+- Provides a point of reference for system designers to extract system specifications.
+
+Basically, it's a model. That's all there is to it. 
+
+
+![ReferenceModel](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/CloudReferenceModel.png)
+- Service Layer: It's an interface.
+- Service Orchestration Layer: Provisions resources for you, established in a workflow, and establishes the automation of processing. This layer lays some **some plan or workflow**. The control layer just executes each process in the workflow as needed. Orchestration is the manager, it has it mapped out already, control layer does it step-by-step.
+- Control Layer: There's no actual control, whatever resources are available, just provision them. This layer checks the availability of resources and creates them. Manages every single type of resource based on availability. The quality is assured through SLAs.
+- Virtual Layer: Virtualization software which virtualizes the physical components (compute, storage and network)
+- Phyiscal layer: The actual tangible stuff
+- Two things that impact every single layer: Business Continuity and Security.
+    - Business Continuity: Fault tolerance mechanisms, there are pro-active and re-active techniques. Pro-active is when you actively try to prevent faults, and then re-active is when if a fault happens, you "react" to it.
+ 
+### Physical Layer
+Foundation 
