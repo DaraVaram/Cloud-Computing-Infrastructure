@@ -45,3 +45,22 @@ The complexities are hidden from the users (doesn't this make it not transparent
 | Failure | Hide the failure and recovery of an object (The mechanisms for recovery are hidden from the consumers, so that they don't "feel" when a failure occurs). | 
 
 ### Openness
+Note: This is basically the same concept as flexibility or standardization (to enable systems to be integrated into other systems). 
+
+A system that offers components that can easily be used by or incorporated into other systems. 
+- Must interact with services from other open systems despite the underlying environments (For example, if you use VMWare or a Virtual Box, and you save them in the standardized format, you can open them in any other software. Another perspective on this is the protocols, etc... need to match).
+- Must have well-defined interfaces
+- Must be able to inter-operate: Two implementations of systems or components from different providers can co-exist and work together.
+- Support portability: An app developed for distribued system A can be executed without modification on a different distributed system B (assuming that system B implements the same _interfaces_ as A). Then it's just plug and play.
+- Extensible: Add new components or replace existing ones without affecting those components already in place (This is the same thing as modular). This applies to both HW and SW applications.
+
+To achieve flexibility in open distributed systems, it is important that the system is organized as a collection of small, and easily replaceable or adaptable components. Again, this just means that the system should be modular. We can decompose large systems into small components that we can integrate together. 
+
+### Scalability
+Scalability can be measured along at least 3 dimensions: 
+- **Size**: We can add more users / resources to the system without any noticeable loss in performance.
+- **Geographical**: Users and resources _may be_ far apart and the communication delays are minimal / hardly noticeable (latency issues shouldn't be a problem)
+- **Administrative**: Can still be easily managed, even if it spans many independent administrative organizations. Cloud provider (many organizations), or multiple cloud providers together, or multiple data centers by a _single_ provider.
+
+## Cloud Infrastructure Reference Model
+![]()
