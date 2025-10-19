@@ -153,12 +153,15 @@ So what's actually the difference between these two? For scale-up, you will have
 
 ### Object-Based Storage System
 ![Object](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ObjectBased.png)
+
 Stores file data in the form of objects, based on the data contents and its attributes. 
 - Uses a flat, non-heirarchical address base.
 - Objects contain user data, related metadata and user-defined attributes.
     - Objects are uniquely identified using object ID.
 
  ![Object2](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ObjectBased2.png)
+
+ 
 OSD: Object storage drives. The storage is a pool of storage resources, it's called "Blob" storage. 
 SAN: Storage Area Network
 
@@ -169,3 +172,26 @@ Allows for block, file and object-based requests. They all deal through the same
 
 
 ## Networking
+Networking enables **data transfer** and **sharing** of IT resources between nodes across geographical regions. Cloud consumers require **reliable** and **secure** networks to **connect** to a cloud and **access** cloud services. Network connectivity also enables **resource aggregation** and service **mobility** across cloud data centers. Multiple clouds may be inter-connected to enable workloads to be moved or distributed (For example, cloud bursting in a hybrid cloud model).
+- Since compute and storage are de-coupled, they are connected through the network.
+- (For the multiple clouds inter-connected point) A cluster is built through networking
+
+
+### Types of Network Communication
+Based on the nodes conneceted by a network, network communication is broadly categorized as 3 things: 
+- Compute-to-compute communication
+- Compute-to-storage communication
+- Inter-cloud communication
+
+### Compute-to-Compute Communication
+Inter-connecting physical compute systems enables compute-to-compute communication. This typically uses **IP-based** protocols. Compute systems connect to a network through **physical network cards**. 
+- Physical switches and routers are common inter-connecting devices.
+
+### Compute-to-Storage Communication
+Definition of Storage Area Network (SAN): A network that **interconnects storage** systems with compute systems, enabling the compute systems to **access** and **share** the storage systems.
+
+- Based on the protocols they support, SANs can be classified as:
+    - Fibre Channel SAN (FCSAN)
+    - Internet Protocol SAN (IPSAN)
+    - Fibre Channel over Ethernet SAN (FCoESAN)
+ 
