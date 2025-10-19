@@ -155,6 +155,26 @@ Consumers interact and consume cloud resources via this layer.
 Basically, this layer responds to interruptions in the workflow / service. If anything happens that can disrupt it across all layers, then the business continuity layer steps in to mitigate. 
 
 ### Security Layer
-- Specifies the entities that operate at this layer: 
-    - Service catalog
-    - Self-service portal
+- Specifies the adoption of: 
+    - Administrative mechanisms: (1) Security and personnel policies (2) Standard procedures to direct safe execution of operations.
+    - Technical mechanisms: (1) Firewall (2) Intrusion **detection** and **prevention** systems (3) Anti-virus
+- Deploys security mechanisms to meet GRC requirements (Governance, Risk, and Compliance)
+- Supports all the layers to provide secure services
+
+Basically, it provides security across all layers. All the firewall stuff, the anti-viruses, potential intrusions / attacks, etc... are all expected to be handled / mitigated in this layer.
+
+## Solutions for Building Cloud Infrastructure
+There are two solutions for building cloud infrastructure: 
+1. Integrating best-of-breed cloud infrastructure components
+- Built my integrating multi-vendor infrastructure components. Basically, you take everything that's the best in the market for that particular domain. Frankenstein it all together.
+- Enables repurposing the existing infrastructure components.
+- Requires spending significant time of IT staff time on:
+    - Evaluating individual and disparate HW components
+    - Installing and integrating infrastructure components
+    - Testing HW, MW, and SW
+    - Checking compatibility of all components
+- Enables organizations to choose and switch vendors easily
+
+It's doable, but not straightforward (According to Ariel's notes). 
+
+2. Cloud-ready converged infrastructure
