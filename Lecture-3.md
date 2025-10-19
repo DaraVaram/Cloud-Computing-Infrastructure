@@ -213,5 +213,65 @@ Definition: A SAN that uses Fibre Channel (FC) protocol to transport data, comma
  - N_port refers to node ports
  - F_port refers to fabric ports
  - E_port refers to edge ports
- - Bi-drectional F <--> N storage-compute. From the fabric port to the node port, that's basically storage-to-compute. 
- 
+ - Bi-drectional F <--> N storage-compute. From the fabric port to the node port, that's basically storage-to-compute.
+
+
+### IP SAN
+Definition: A SAN that uses Internet Protocol (IP) for the transport of storage traffic. It transports block I/O over an IP-based network.
+
+Key drivers of IP SAN:
+- Leveraging an existing IP-based network instead of building a new FC SAN infrastructure
+- Many robust, mature security options are already available for IP networks
+- Many long-distance disaster recovery (DR) solutions already leverage IP-based networks
+
+The two primary IP SAN protocols are: iSCSI and FCIP
+
+### iSCSI
+Definition: Internet Small Computer Systems Interface, an Internet Protocol (IP)-based storage networking standard for linking data storage facilities. It provides **block-level access** to storage devices by **carrying SCSI commands over a TCP/IP network**.
+
+ ![iscsi](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/iSCSI.png)
+
+iSCSI network components are: 
+- iSCSI initiators, .e.g., iSCSI HBA
+- iSCSI targets:
+    - Example: Storage system with iSCSI ports (native iSCSI)
+    - Example: iSCSI gateway (bridged iSCSI)
+- IP-based network
+
+The whole physical compute system with the hypervisor is the host, the iSCSI gateway is a **specialized hardware**, and it converts IP to FC traffic.
+
+
+### FCIP Networking
+Definition: FCIP is an **encapsulation** of **FC frames into IP packets** that are transported between disparate FC SANs over an IP-based network through FCIP tunnel.
+
+
+![fcip](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FCIP.png)
+
+
+An FCIP entity (e.g., FCIP gateway) exists at either end of an FCIP tunnel: 
+- Encapsulates FC into IP
+- Transfers IP packets to remote gateway
+- Decapsulates FC from IP.
+
+This FCIP networking is widely used in disaster recovery (DR) implementations. This is also for data center to data center communication.
+
+### FCoE SAN
+Definition: A converged enhanced Ethernet (CEE) network that uses the FCoE protocol to transport FC data along with regular Ethernet traffic over high speed Ethernet links. FCoE encapsulates FC frames into Ethernet frames.
+
+Transfers both **compute-to-compute** and **FC storage traffic** using the **same network components**
+- Reduces complexity of managing multiple discrete networks
+- Reduces the number of adapters, cables and switches, along with power and space consumption required in a data center.
+
+Based on an enhanced Ethernet standard that ensures **lossless transmission** of FC traffic over Ethernet.
+
+![fcoe](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FCoE.png)
+
+Compute-to-compute uses IP communication. Recall what we said earlier. 
+
+| Component | Description | 
+| --- | --- |
+| Converged Network Adapter (CNA) | <ul><li>Provides functionality of both NIC and FC HBA (host bus adapter) in a single device</li><li>Encapsulates FC traffic onto Ethernet frames (basically FCoE traffic)</li><li>Consolidates both FC and regular ethernet traffic over CEE (Converged Enhanced Ethernet) links </li></ul>
+| Software FCoE Adapter | <ul><li>A software on the compute system performs FCoE processing</li> <li> Supported NICs transfer both FCoE and regular Ethernet traffic </li></ul>
+| FCoE Switch | <ul><li>Contains Fibre Channel Forwarder (FCF), Ethernet bridge, and a set of ports for FC, Ethernet or FCoE connectivity.</li><li> FCF encapsulates FC frames into Ethernet frames (FCoE frames) and decapsulates FCoE frames to FC frames. </li></ul>
+| FCoE Storage Port| <ul><li>Connects to FCoE switch, enabling end-to-end FCoE environment. </li></ul>
+
