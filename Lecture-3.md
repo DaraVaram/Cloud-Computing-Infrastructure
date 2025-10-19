@@ -191,7 +191,27 @@ Inter-connecting physical compute systems enables compute-to-compute communicati
 Definition of Storage Area Network (SAN): A network that **interconnects storage** systems with compute systems, enabling the compute systems to **access** and **share** the storage systems.
 
 - Based on the protocols they support, SANs can be classified as:
-    - Fibre Channel SAN (FCSAN)
-    - Internet Protocol SAN (IPSAN)
-    - Fibre Channel over Ethernet SAN (FCoESAN)
+    - Fibre Channel SAN (FC SAN)
+    - Internet Protocol SAN (IP SAN)
+    - Fibre Channel over Ethernet SAN (FCoE SAN)
+ 
+### FC SAN
+Definition: A SAN that uses Fibre Channel (FC) protocol to transport data, commands, and status information between compute and storage systems. FC provides **block-level** access to storage. 
+![FCSAN](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FCSAN.png)
+
+**Fabric Connect and Addressing**: 
+- A **fabric** created with FC switches connects all nodes and enables them to communicate.
+- Each switch in a fabric contains a **unique domain identifier**.
+- Each **network adapter** is physically identified by a 64-bit **world-wide node name**. This WWNN is like a MAC address.
+- Each **adapter port** is physically identified by a **64-bit world-wide port name**.
+- Each adapter port in a fabric has a unique 24-bit FC address.
+     - Fabric assigns FC addresses to adapt to adapter ports dynamically.
+
+ ![Fabric](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FabricPortTypes.png)
+
+ Nomenclature: 
+ - N_port refers to node ports
+ - F_port refers to fabric ports
+ - E_port refers to edge ports
+ - Bi-drectional F <--> N storage-compute. From the fabric port to the node port, that's basically storage-to-compute. 
  
