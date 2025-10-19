@@ -101,3 +101,71 @@ Redundant Array of Independent Disks (RAID): A storage technology in which data 
 | RAID 6 | Striped set with **independent disk access** and **dual distributed parity**. |
 
 **Apparently, this is an exam question.**
+
+
+## Data Access Methods
+There's 3 methods: (1) Block-level, (2) File-level, (3) Object-level. See figure below. 
+![DataAccessMethods](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/DataAccess.png)
+
+The read and writes happen over the network itself (for all). 
+- For block-based, we associate with one VM only
+- For file-based, we can do something like a NAS (network attached storage), like our AUS U: drives. Multiple systems can access the resource and share files
+- For object-based, it has specific metadata associated to objects / files. For exmaple, Google Drive, media sharing. When you upload a file to Google Drive, you get a unique link for it, which you can use to share it.
+
+
+### Storage System Architecture
+Storage system architectures are based on the **data access** methods. We have 4 common storage system options: 
+1. Block-based
+2. File-based
+3. Object-based
+4. Unified
+
+### Block-Based Storage System
+![Block](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/BlockBased.png)
+
+Enables creating and assigning storage volumes to compute systems
+- Compute system discovers volumes as local drives
+- Required file system can be created on the volumes themselves
+- In some implementations, the front-end, the cache, and the backend are integrated on a **single board**. This is referred to as a **storage processor** or a **storage controller**.
+
+A VM can have many disks, but a disk can only be associated to one VM. There's overhead for encryption if you choose that option.
+
+If you're able to find what you're looking for in the **cache**, then it's a **cache hit**. If you have to go to the **physical disk**, it's a **cache miss**.
+
+
+
+### File-Based Storage System
+![File](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FileBased.png)
+
+A dedicated high-performance file server with storage. This is also known as network attached storage, or NAS. 
+- Enables clients to share files over an IP network
+    - Supports data sharing for UNIX and Windows users.
+ 
+Many VMs can access a NAS. The deployment options for NAS are: 
+1. Traditional NAS (scale-up)
+- Capacity and performance of a single system is scaled by upgrading or adding more NAS components.
+  
+2. Scale-out NAS
+- Multiple processing and storage nodes are pooled in a cluster that works as a single NAS device.
+- Addition of nodes scales cluster capacity and performance without disruption.
+
+So what's actually the difference between these two? For scale-up, you will have to actually upgrade the components, or change out the components / add more. For scale-out, we have to pool the different storage nodes together to make it work as a single NAS. Scale-out is basically having multiple NAS modules that act as if they're one. Scale-up is add more drives to a single NAS system. Same concept as the compute.  
+
+### Object-Based Storage System
+![Object](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ObjectBased.png)
+Stores file data in the form of objects, based on the data contents and its attributes. 
+- Uses a flat, non-heirarchical address base.
+- Objects contain user data, related metadata and user-defined attributes.
+    - Objects are uniquely identified using object ID.
+
+ ![Object2](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ObjectBased2.png)
+OSD: Object storage drives. The storage is a pool of storage resources, it's called "Blob" storage. 
+SAN: Storage Area Network
+
+### Unified Storage System
+![Unified](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/UnifiedStorage.png)
+
+Allows for block, file and object-based requests. They all deal through the same storage controller. 
+
+
+## Networking
