@@ -44,4 +44,22 @@ Now, we ask the real question: **What is Cloud Computing?**
 - Cloud Computing is not managed by humans. It's managed by systems (the control and the orchestration layers - we'll get to this later)
 - Multi-tenancy: Multiple users using / sharing resources at the same time.
 
- 
+ What are the essential **cloud characteristics**? This is how we will answer case-study based questions in exams. If a system does not have all 5 of these, then it cannot be defined as a cloud computing system. 
+ - On-demand self-service
+ - Broad network access
+ - Resource pooling
+ - Rapid elasticity
+ - Measured service
+
+Let's go into the details of each one of these. 
+
+| Characteristic | Definition | Discussion |
+|--------|--------|--------|
+| On-demand self-service | A consumer can **unilaterally provision computing capabilities**, such as server time and network storage, as needed automatically without requiring human interaction with each service provider. | Consumers use a web-based self-service portal (think about Azure) to view the service catalog and request cloud-related services. This enables consumers to provision these services in a simple, flexible manner. This whole thing means there's no human intervention. There's no one guy that builds it for you. Because of this, there's little to no delay in the provisioning of resources, it's provided **when and as required**. Reduces the time needed to provision new or additional IT resources. Let's define provisioning: Related to the actual **building** of the system that you need. 
+| Broad network access | Capabilities are available over the network and accessed through standard mechanisms that promote use by heterogeneous thin or thick client platforms, (e.g., mobile phones, tablets, laptops, and workstations). | Consumers access cloud services on **any** client or end-point device from **anywhere** over a network. The standard mechanisms here **should** support the use of heterogenous client platforms. This means that we can use any device we want as long as that device can connect to the network. 
+| Resource pooling | The provider’s computing resources are pooled to serve multiple consumers using a **multi-tenant model**, with different **physical** and **virtual** resources dynamically assigned and reassigned **according to consumer demand**. There is a sense of **location independence** in that the customer generally has no control or knowledge over the **exact location** of the provided resources but may be able to specify location at a **higher level of abstraction** (e.g., country, state, or datacenter). Examples of resources include storage, processing, memory, and network bandwidth.| How we saw this in Azure was through the regions and the zones. This allows us to improve resource utilization, and allows flexibility provision. Also allows us to reclaim resources as necessary. The resource pooling is specifically what allows multi-tenancy through the aggregation of pooled resources. 
+|Rapid elasticity* | Capabilities can be **elastically provisioned** and **released**, in some cases **automatically**, to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often **appear to be unlimited** and can be appropriated in any quantity at any time.| Consumers can adapt variations in workloads and maintain performance. They may be able to avoid excessive costs from the over-provision of resources. You basically get what you need at that moment. **Rapid elasticity** in particular allows the capability to scale-up or scale-out based on demand.  <ul><li> Scale-up: upgrading the machine itself, e.g., from 2 CPUs to 4 CPUs.</li><li>list Scale-out: Adding more machines. For example, if your CPU util. reaches 90%, another resource will automatically be provisioned.</li></ul> All of this would be under the service-level agreement between the consumer and the provider. This contract **guarantees** a certain level of quality of resources and services.
+
+
+
+
