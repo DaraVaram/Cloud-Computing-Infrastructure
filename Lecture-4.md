@@ -172,4 +172,4 @@ Shared File system:
 
 ![FileSystemManager](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FileSystemManageVMs.png)
 
-In this figure, you can see that
+In this figure, you can see that...
