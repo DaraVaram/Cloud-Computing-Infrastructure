@@ -172,4 +172,110 @@ Shared File system:
 
 ![FileSystemManager](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FileSystemManageVMs.png)
 
-In this figure, you can see that...
+In this figure, you can see that the hypervisors can write and read their data to this shared file system. 
+
+### VM Console
+This is an interface to view and manage VMs on a compute system or a cluster. VM console may be: 
+- Installed locally on a compute system
+- Web-based
+- Accessed over a remote desktop connection.
+
+It's used to perform activities such as: 
+- Installing a guest OS and accessing VM BIOS
+- Powering a VM on or off
+- Configuring virtual HW and troubleshooting
+
+### VM Template
+Definition: A master copy of a VM with **standardized virtual hardware and software configuration** that is used to **create new VMs**.
+
+It is created in two ways: 
+1. Converting a VM into a template
+2. Cloning a VM to a template
+
+Steps involved in updating a VM template are: 
+1. Convert the template into a VM
+2. Install new software / OS / software patches
+3. Convert the VM back to a template.
+
+Basically, from the template, create the VM, update stuff, and then make it a template again. What's the difference between a VM and a container? Containers are more lightweight. It's not necessarily a full OS, could just be the applications you need, etc...
+
+
+### Virtual Appliance
+Definition: **Preconfigured** virtual machine(s) **preinstalled with a guest OS** and an **application dedicated to a specific function**.
+
+What's the difference between a template and an appliance? One of them is customizable. Appliciances are constrained. You can get a VM for a firewall. That's an appliance. You can't do whatever you want with it. It's only for that application. A template can literally be whatever. 
+
+Used for functions such as: 
+- Providing SaaS
+- Routing packets or deploying a firewall
+
+Simplifies the delivery and operation of an application. It also simplifies the installation process and eliminates configuration issues. The application is protected from issues in other virtual appliances. They're all independent. 
+- You can create this using the **Open Virtualization Format (OVF)**.
+
+### VM Network
+Definition: A **logical network** that provides **Ethernet connectivity** and enables communication between VMs **within a compute system**.
+
+A logical abstraction of the network interface. 
+
+![VMNetwork](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/VMNetworks.png)
+
+What do we see in this figure? On the left and right side, we have separate compute systems. Each one has a VM network, which connects the different VM instances in each compute system. They can communicate with each other through the NICs. 
+
+### VM Network Components
+
+| Component | Description |
+| --- | ---- | 
+| Virtual Switch   |   <ul><li>A logical OSI Layer 2 Ethernet switch created **in a compute system**</li><li>Connects VMs locally and also directs VM traffic to a physical network </li><li> **Forwards frames** to a virtual switch point based on destination address</li><li>A distributed virtual switch can function across multiple physical compute systems</li></ul> |
+| Virtual NIC |  <ul><li>Connects a VM to a virtual switch and functions like a physical NIC </li><li>Has unique MAC and IP addresses </li><li>Forwawrds the VMs' network I/O in the form of Ethernet frames to the virtual switch</li></ul> | 
+| Uplink NIC | <ul><li>A physical NIC connected to the uplink port of a virtual switch</li><li>Functions as an ISL (inter-switch link) between virtual and physical switches</li></ul>
+
+## Logical Number Unit (LUN)
+Definition: **Abstracts the identity and internal functions** of **storage system(s)** and **appear as physical storage** to the compute system.
+
+Mapping of virtual to physical storage is performed by the virtualization layer. The provider provisions LUN to consumers for storing data. 
+- Storage capacity of a LUN can be dynamically expanded or reduced
+
+LUN can be created from: 
+1. RAID set (traditional approach)
+2. Storage pool
+
+![LUN](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/LUNs.png)
+
+There's two types of volumes that are created from storage pools: 
+1. Thin LUN
+- **Does not require** physical storage to be completely allocated at the time of creation
+- **Consumes storage as needed** from the underlying storage pool in increments called **thin LUN extents**.
+
+2. Thick LUN
+- Physical storage is **completely allocated** at the time of creation.
+
+Thin LUN: It's basically not completely reserved for you. It's based on usage. You only provision what you need to store. Some issues here: For example, latency, or what if all the thin LUNs are consumed already? It's also apparently a security vulnerability. There's a potential problem of data leakage. You might be using someone else's allotted space. 
+
+Thick LUN: If you reserve a full 1TB, you will be charged for it whether you use it or not. This is the same thing with Azure. If I want a 1TB LUN, then I will be charged for that, not for whatever I use. 
+
+### Use of Thin LUN
+They're appropriate for applications that can **tolerate performance variations**.
+- In some cases, performance improvement is seen when using a thin volume due to striping across a large number of drives in the pool. Basically, instead of one huge storage space, we have them striped (RAID), which speeds things up.
+
+Environments where cost, storage utilization, space and energy efficiency is super important. For applications where storage consumption and space requirements are difficult to forecast. You pay-as-you-go. Also appropriate for environments that needs to be optimized for self-provisioning. What does this mean?
+- Self-service or fast provisioning environments. The space needs to be allocated automatically based on usage.
+
+
+## Virtual Network 
+Definition: A **software-based logical network** that is either a **segment of a physical network** or spans **across multiple physical networks**.
+
+Appears as a phyiscal network to the connected nodes. Virtual networks share network components **without leaking information** between them (**isolation** of traffic). Network traffic is routed _only_ when two nodes in different virtual networks are communicating. 
+- All types of networks can be virtualized, such as compute networks, SANs and VM Networks. 
+
+
+![VirtualNetwork](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/VirtualNetwork.png)
+
+There are two virtual switches. They segment traffic between these two sets of VMs. Each vertical strip is a virtual network. They can have VMs across different compute systems, connected in the same virtual network. 1 and 3 are in the same virtual network. 
+
+The VMs are connected to virtual switches, which are routed to the physical switch through a physical NIC. What does the IP router does here? It's there if you want to go outside of the local network(s). All this can be seen as being in the same data center. 
+
+Types of virtual networks: 
+- Virtual LAN (VLANs)
+- Private Virtual LAN (PVLANs)
+- Stretched VLAN
+- Virtual SAN
