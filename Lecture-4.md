@@ -272,10 +272,53 @@ Appears as a phyiscal network to the connected nodes. Virtual networks share net
 
 There are two virtual switches. They segment traffic between these two sets of VMs. Each vertical strip is a virtual network. They can have VMs across different compute systems, connected in the same virtual network. 1 and 3 are in the same virtual network. 
 
-The VMs are connected to virtual switches, which are routed to the physical switch through a physical NIC. What does the IP router does here? It's there if you want to go outside of the local network(s). All this can be seen as being in the same data center. 
+The VMs are connected to virtual switches, which are routed to the physical switch through a physical NIC (used as uplinks). What does the IP router does here? It's there if you want to go outside of the local network(s). All this can be seen as being in the same data center. 
 
 Types of virtual networks: 
-- Virtual LAN (VLANs)
+- Virtual LAN (VLANs) - Can be public or private
 - Private Virtual LAN (PVLANs)
 - Stretched VLAN
-- Virtual SAN
+- Virtual SAN (VSAN)
+
+### Virtual LAN (VLAN)
+Definition: A virtual network created on a LAN enabling communication between a group of **nodes with a common set of functional requirements**, independent of their physical location in the network.
+
+It is identified by a unique 12-bit VLAN ID. Configuring a VLAN: 
+- Define VLAN on physical and virtual switches and assign VLAN ID
+- Configure VLAN membership based on port, MAC address, protocol, IP subnet address or application
+
+### Private VLAN (PVLAN)
+Definition: A **sub-VLAN** that segregates the nodes _within_ a standard VLAN, called as **primary VLAN**. A PVLAN can be configured as either **isolated or community**.
+
+![PVLAN](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/PVLAN.png)
+
+Enables a provider to support a larger number of consumers. How? Potentially because of the segregation, and also the fact that they don't know about each other. It provides security between nodes on the same VLAN (because of isolation). It simplifies network management, because it compartmentalizes it. 
+
+In the figure, we see that the isolated PVLAN cannot even communicate with the other VMs in the same PVLAN. Community can talk to other members of the community. In a community, you can talk to the outside generally, in isolated, you can only talk to the outside from a particular VM. 
+
+### Stretched / Extended VLAN
+Definition: A VLAN that spans multiple sites and enables **Layer 2 communication** between a group of nodes **over a Layer 3 WAN infrastructure**, independent of their physical location.
+
+You can extend a VLAN to span other locations as well built on top of a WAN. I.e., across multiple data centers. 
+
+Layer 2 WAN frames are encapsulated in Layer 3 WAN packets. This enables the movement of VMs across locations without changing their network configuration. This is apparently not the same as live migration. 
+
+![StretchedVLAN](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/StretchedVLAN.png)
+
+The figure shows us that we have two sites, we have two VLANs that are connected through a WAN. 
+
+### Virtual SAN (VSAN)
+Definition: A logical fabric, created on a physical FC or FCoE SAN enabling communication between a group of nodes with a common set of requirements, independent of their physical location in the fabric.
+
+A VSAN has its own fabric services, configuration, and set of FC (Fiber Channel) addresses. Traffic disruptions in one VSAN **do not effect** other VSANs. A VSAN can be extended across sites similar to Stretched VLANs. 
+- This is specifically for **compute-to-storage** communication.
+
+**Mapping VLANs and VSANs in an FCoE SAN**:
+
+The mapping determines which VLAN carries a VSAN traffic. Mapping considerations: 
+- Configure a dedicated VLAN for each VSAN
+- VLANs configured for VSANs **should not carry** regular LAN traffic
+
+![MappingVLANs](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/MappingVLANs.png)
+
+What does this figure tell us? This looks like a switching table / routing table. The VLAN IDs (100 and 200) are specifically for compute-to-compute because if you look in the table, there's no VSAN IDs. The FCoE can handle both compute-to-compute _and_ compute-to-storage. 
