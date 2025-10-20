@@ -124,3 +124,52 @@ Cloud services obtain computing resources from the resource pool. They are **siz
 Another example: 
 
 ![ExampleResourcePool](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ResourcePoolExample.png)
+
+Each one of the resources here has their own hypervisor, meaning that it's already virtualized. Now, we group them together and virtualize again, and then you create virtual machines. You connect them to each other. This aggregation method is a software (hypervisor), or it could be a networking thing. They are networked together for sure.
+
+![StorageBlockBased](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/StoragePooling.png)
+
+This is an example for a block-based storage system. This is only for one system. We are pooling resources into a single storage system. In this example, there is no computer. It's just storage drives pooled together. We obviously need the storage controllers (something has to manage it), but it's not a computer. If we want to extend this across storage systems: 
+
+![StorageBlockBased2](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/StoragePooling2.png)
+
+We have a higher level of abstraction, where we are basically pooling the resource pools of storage. 
+
+### Network Pooling
+
+![NetworkPooling](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/NetworkPooling.png)
+
+This is what happens when you do network pooling. This pool has three NICs. We are pooling the bandwidth (technically the NICs). Then, you allocate to the consumers based on how much they need / want. This is called **teaming** the NICs. 
+
+## Virtual Machines (VMs)
+Definition: A logical compute system that, like a physical compute system, runs an OS and applications.
+
+This is **created by a hypervisor and is installed on a physical compute system**. This hypervisor can be either bare-metal or hosted, but the VM is installed specifically on top of the hypervisor. It comprises of the virtual HW, such as virtual processor, memory, storage, and network resources. 
+- **Appears as a physical compute system** to the guest OS
+- Hypervisor **maps** the virtual HW to the physical HW
+- Provider provisions the VMs to consumers for deploying applications
+    - VMs on the same **compute system** or **cluster** run in **isolation**. Basically, the people that are using different VMs on the same compute system / cluster will not feel the impact of the others on that cluster. This is unless you network them with each other.
+ 
+### VM Files
+From the hypervisor's perspective, the VM is a discrete set of files.
+
+| Files | Description | 
+| ---- | ----- |
+| Confirguation File | <ul><li>Stores information such as the VM name, BIOS information, the guest OS type, and memory size</li></ul> | 
+| Virtual Disk File | <ul><li>This stores the contents of the VM's disk drive</li></ul> | 
+| Memory State File | <ul><li>This stores the memory contents of a VM in a **suspended** state </li></ul> | 
+| Snapshot File | <ul><li>Stores the VM settings and virtual disk of a VM </li></ul> | 
+| Log File | <ul><li>Keeps a log of the VM's activity and is typically used in troubleshooting </li></ul> |
+
+### File system to manage VM Files
+Hypervisor's native file system: 
+- Clusted file system deployed on local or external storage
+- Enables **multiple hypervisors** to **perform concurrent reads and writes**
+- Enables high availability to protect against hypervisor or compute system failures
+
+Shared File system: 
+- Enables storing VM files on remote file servers or NAS devices
+
+![FileSystemManager](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/FileSystemManageVMs.png)
+
+In this figure, you can see that
