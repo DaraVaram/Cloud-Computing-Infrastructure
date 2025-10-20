@@ -70,5 +70,57 @@ We can see that the VMM and is part of the hypervisor. The hypervisor **does not
 
 | Types of Hypervisors | Description |
 | ------ | ------- |
+|Bare-metal | <ul><li>Installed on a bare-metal HW</li><li> Requires certified HW</li><li> Suitable for enterprise data centers and cloud infrastructure </li></ul>
+| Hosted | <ul><li>Installed as an application on an OS </li><li> Relies on OS running on physical machine(s) for device support </li><li>Suitable for development testing and training purposes.</li></ul>
 
-Does the hypervisor only manage the compute, or does it manage everything? 
+Hosted: would be something like having a virtual box and then installing Linux onto your PC using that virtual box. That's what hosted is. 
+
+Bare metal: The hypervisor will be installed directly onto the machine prior to any OS. There's no OS in between the hypervisor and the machine. It's as if it's the OS, and now, on top of this, you can have multiple VMs installed. There are some minimum requirements for installation. The figure in the last section is an example of bare-metal. Example: ESXI. 
+- To access bare-metal hypervisor: You have an IP address, use the console to create VM
+
+If you have hosted, then there would be a **layer of OS** between the physical resources and the hypervisor. 
+
+
+### Network Virtualization Software
+Abstracts physical **network** resources to create virtual resources. This allows VMs to talk to each other, and also isolates the traffic. 
+- Virtual LAN / Virtual SAN
+- Virtual Switch
+
+Network virtualization software can be: 
+- Built into the operating environment of a **network device**
+- Installed on an independent **compute system**
+    - Fundamental component for deploying software-defined component.
+- Hypervisor's capability
+
+
+### Storage Virtualization Software
+Abstracts physical **storage** resources to create virtual resources. 
+- Virtual volumes
+- Virtual disk files
+- Virtual arrays
+
+
+Storage virtualization software can be (This is the exact same thing as above, just switch network with storage): 
+- Built into the operating environment of a **storage device**
+- Installed on an independent **compute system**
+    - Fundamental component for deploying software-defined component.
+- Hypervisor's capability
+
+**Example:**
+
+If you have a server that has compute, storage and network, you can virtualize all of it. The two ways of doing this is either we virtualize the entire thing and all of its components on an independent compute system, or we can just do the Azure thing which is where we get a virtual disk that's already virtualized and use that immediately. This is what we mean by it being built into the operating environment of a storage device. 
+
+
+## Resource Pooling
+Definition: A **logical abstraction of the aggregated computing resources**, such as  processing power, memory capacity, storage, and network bandwidth that are managed collectively. **Very important:** Everything before this, we abstract / virtualize first, and then aggregate. For resource pooling, we have a pool of resources that are not inherently abstracted together. So then we aggregate them and _then_ we virtualize again. 
+
+You have separate hard drives. Now, you put the hard drives in a box to "abstract" them, and then you put them into a bigger box to aggregate and virtualize. Abstracting the abstracted resources. You can increase the size of the resource pool as well. Then, you can assign the resources based on the users' needs. 
+
+![ResourcePool](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ResourcePool.png)
+
+Cloud services obtain computing resources from the resource pool. They are **sized** according to **service requirements**.
+- Resources are **dynamically allocated** as per consumer demand
+
+Another example: 
+
+![ExampleResourcePool](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ResourcePoolExample.png)
