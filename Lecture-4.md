@@ -30,4 +30,45 @@ Enables a multi-tenant environment, improving utilization of physical resources.
 - Resource pooling
 - Rapid elasticity
 
-Multi-tenancy is not necessarily in-line with resource pooling. You can have a multi-tenant system without the need to pool resources, etc... I can sign in to the same A100 as any of the other users, but it is the same GPU node that we're using. 
+Multi-tenancy is not necessarily in-line with resource pooling. You can have a multi-tenant system without the need to pool resources, etc... Think about having the same compute node, with different ```conda``` environments on it. This is basically the same thing as virtualizing the machine. Everyone can have their own ```conda``` environment, but on the same machine (an A100). You **can** incorporate resource pooling (multiple A100s as part of a cluster), and allow rapid elasticity (adding more storage to the A100 cluster). 
+
+_Do you need virtualization for multi-tenancy?_ You do not always need virtualization for multi-tenancy, as other methods like application-level and database-level isolation are also common. Virtualization is one method, especially useful when strong isolation is required, while application-level isolation is often used for cost-effective SaaS applications.
+
+Specifices the entities operating at this layer: 
+- Virtualization software
+- Resource pools
+- Virtual resources
+
+```mermaid
+flowchart LR
+    A[**Step 1:** Deploy virtualization software on:<br/>• Compute systems<br/>• Network devices<br/>• Storage devices] --> 
+    B[**Step 2:** Create resource pools:<br/>• Processing power & memory<br/>• Network bandwidth<br/>• Storage]
+    B --> 
+    C[**Step 3:** Create virtual resources:<br/>• Virtual machines<br/>• Virtual networks<br/>• LUNs]
+    C --> 
+    D((Virtual resources are packaged<br/>and offered as services))
+
+```
+
+### Compute Virtualization Software: Hypervisor
+Definition: Software that is installed on a compute system and **enables multiple OSs** to run **concurrently** on a physical compute system.
+
+Hypervisor Kernel: 
+- Provides functionality similar to OS kernel
+- Designed to run multiple VMs concurrently
+
+Virtual Machine Manager (VMM): 
+- Abstracts hardware
+- Each VM is assigned a VMM
+- Each VMM gets a share of physical resources.
+
+This is summarized pretty well in the figure below: 
+
+![hypervisorvmm](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/Hypervisor.png)
+
+We can see that the VMM and is part of the hypervisor. The hypervisor **does not only manage the compute**. It manages the entire hardware that it's installed on. Otherwise, it wouldn't be able to virtualize that particular hardware. If you want to virtualize storage, you will need to hypervise the storage. 
+
+| Types of Hypervisors | Description |
+| ------ | ------- |
+
+Does the hypervisor only manage the compute, or does it manage everything? 
