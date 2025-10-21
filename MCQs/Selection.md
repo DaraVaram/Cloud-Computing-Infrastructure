@@ -205,11 +205,11 @@ Reference: [Lecture 3](https://github.com/DaraVaram/Cloud-Computing-Infrastructu
 
 ## 22. A compute system is configured to access data from a block-based storage system over a network. What must be true about the file system? 
 - It is managed by the storage system
-- It is managed by the computer system
-- It is part of the storage area network. ✅
+- It is managed by the computer system ✅
+- It is part of the storage area network. 
 - It is managed by the object-based storage device node.
 
-Justification: You're accessing the data through a network. It's not part of the compute system itself. It's also in the diagram where SAN is the middleman
+Justification: You're accessing the data through a network. When a compute system (like a server or VM) accesses data from a block-based storage system over a network — for example, through iSCSI or Fibre Channel (FC) — it’s using block storage.
 
 Reference: [Lecture 3](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/Lecture-3.md) (Block-based storage system slide / diagram)
 
