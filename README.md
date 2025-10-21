@@ -17,3 +17,11 @@ AI-Generated Notes:
 - [Lecture 3](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/AI/Lecture3.md): Completion Status: ✅
 - [Lecture 4](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/AI/Lecture4.md): Completion Status: ✅
 - [Lecture 5](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/AI/Lecture5.md): Completion Status: ✅
+
+Potential MCQ questions that could be included in the midterm can be found through ```./MCQs/```. They will be linked below as well: 
+
+- [MCQs - Lecture 1](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Lecture1.md): Completion Status: []; Total Number of questions:
+- [MCQs - Lecture 2](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Lecture2.md): Completion Status: []; Total Number of questions:
+- [MCQs - Lecture 3](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Lecture3.md): Completion Status: []; Total Number of questions:
+- [MCQs - Lecture 4](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Lecture4.md): Completion Status: []; Total Number of questions:
+- [MCQs - Lecture 5](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Lecture5.md): Completion Status: []; Total Number of questions: 
