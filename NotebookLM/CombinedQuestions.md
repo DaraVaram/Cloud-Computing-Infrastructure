@@ -48,37 +48,95 @@
 # Hard Difficulty
 
 ## 1. In the context of the Cloud Computing Reference Model, which layer is responsible for providing workflows to execute automated tasks and interacting with various entities to invoke provisioning?
-- Service orchestration layer
+- Service orchestration layer ✅
 
 ## 2. Which RAID level provides the highest level of data protection among the options by using dual distributed parity, allowing it to withstand the failure of two simultaneous disk drives?
-- RAID 6
+- RAID 6 ✅
 
 ## 3. A cloud provider wants to implement a storage area network (SAN) that leverages their existing, robust IP network infrastructure and is widely used for disaster recovery solutions. Which SAN protocol would be the most suitable choice?
-- iSCSI
+- iSCSI ✅
 
 From the available options, this is the only one that is an IP SAN protocol. 
 
 
 ## 4. What is the key difference between a bare-metal hypervisor and a hosted hypervisor?
-- A bare-metal hypervisor is installed directly on the hardware, and the hosted hypervisor is installed on an application or OS.
+- A bare-metal hypervisor is installed directly on the hardware, and the hosted hypervisor is installed on an application or OS. ✅
 
 ## 5. Which compute resource management technique allows a single physical processor to appear as two logical processor cores to an operating system, enabling two threads to be scheduled simultaneously?
-- Hyperthreading
+- Hyperthreading ✅
 
 ## 6. In a software-defined approach to infrastructure management, what is the primary function of the controller?
-- To separate management functions from the infrastructure components and enable centralized, automated and policy-driven management
+- To separate management functions from the infrastructure components and enable centralized, automated and policy-driven management ✅
 
 ## 7. A storage administrator creates a 10 TB Logical Unit Number (LUN) for an application but wants to avoid allocating the full 10 TB of physical disk space immediately. Which storage provisioning technology allows this?
-- Thin LUN
+- Thin LUN ✅
 
 ## 8. What is the primary purpose of a Virtual SAN (VSAN) in a Fibre Channel fabric?
-- To create a logical fabric on a physical SAN, enabling communication between a group of nodes independent of their location
+- To create a logical fabric on a physical SAN, enabling communication between a group of nodes independent of their location ✅
 
 ## 9. Which of the following is NOT one of the five essential characteristics of cloud computing as defined by NIST?
-- Simplified infrastructure management
+- Simplified infrastructure management ✅
 
 ## 10. When building a cloud infrastructure, an organization chooses to integrate multi-vendor components, repurposing some of their existing hardware. What is a significant drawback of this 'best-of-breed' approach?
-- Requires a significant amount of IT staff time for evaluation, integration and checking for compatibility.
+- Requires a significant amount of IT staff time for evaluation, integration and checking for compatibility. ✅
 
 ## 11. In Platform as a Service (PaaS), what does the consumer manage and control?
-- Only the deployed applications and their hosting environment configuration settings. 
+- Only the deployed applications and their hosting environment configuration settings. ✅
+
+## 12. What is the primary function of a Converged Network Adapter (CNA) in an FCoE SAN?
+- To provide functionality of both FC HBA and NIC in a single device ✅
+
+## 13. An externally-hosted private cloud is characterized by which of the following arrangements?
+- Implementation is out-sourced to a provider, but the infrastructure is for the exclusive use of a single organization ✅
+
+## 14. Which distributed system design goal ensures that an application developed for one system can run without modification on another system that implements the same interfaces?
+- Portability ✅
+
+## 15. A unified manager in the control layer is creating resource pools and categorizing them as 'Gold', 'Silver', and 'Bronze' based on performance and protection levels. What is the primary purpose of this activity?
+- To create a variety of services with different QoS levels and pricings for consumers. ✅
+
+## 16. In a virtualized environment, what is the role of a VM Template?
+- To create a master copy of a VM with a standardized configuration for deployment of new VMs ✅
+
+## 17. Which network traffic management technique queues excess packets for later transmission when the traffic rate exceeds a pre-configured limit on an interface?
+- Traffic shaping
+
+## 18. What distinguishes an object-based storage system from a file-based storage system?
+- Object-based uses a flat, non-hierarchical address space to store the data ✅
+
+## 19. In the context of RAID techniques, what is the primary purpose of 'mirroring'?
+- Store an exact copy of the data on a separate drive. Redundancy ✅
+
+## 20. The vision of 'Computer Utilities', proposed by Leonard Kleinrock in 1969, is an early conceptualization of which modern technology?
+- Cloud computing, duh ✅
+
+## 21. What is a primary advantage of a blade compute system over a rack-mounted compute system?
+- Its modular design increases compute density and scalability within a smaller footprint ✅
+
+## 22. A hypervisor needs to reclaim memory from VMs when physical memory becomes scarce. It uses an agent in the guest OS to request memory pages, which are then returned to the hypervisor's memory pool. What is this technique called?
+- Dynamic memory allocation. Don't get confused because memory page is mentioned here. ✅
+
+## 23. Which of the following describes the 'control layer' in the cloud computing reference model?
+- Includes software tools responsible for managing the cloud infrastructure and provisioning resources ✅
+
+## 24. The 'rapid elasticity' characteristic of cloud computing provides what key advantage to the consumer?
+- The ability to scale outward and inward commensurate with demand, appearing unlimited. ✅
+
+## 25. A Community Cloud deployment model is distinct from a Private Cloud because it is:
+- Provisioned for exclusive use by consumers from organizations that have shared concerns. ✅
+
+## 26. What is the function of a Cloud Services Brokerage (CSB)?
+- Acts as an intermediary that adds value to cloud services on behalf of the consumers ✅
+
+## 27. Which resource management technique helps achieve higher overall storage pool performance by restriping data across all disk drives in the pool when new drives are added?
+- Storage pool rebalancing ✅
+ 
+## 28. A 'Stretched VLAN' provides a unique capability for cloud environments. What is its primary function?
+- Enables layer 2 communication between nodes in different physical locations through a layer 3 WAN ✅
+
+## 29. In the NIST definition of cloud computing, what does 'multi-tenant model' refer to?
+- Provider's compute resources are pooled to serve multiple consumers ✅
+
+## 30. Which of these is a key benefit of using 'Automated Storage Tiering'?
+- It stores the right data on the right tier to meet service levels and optimize the cost. ✅
+
