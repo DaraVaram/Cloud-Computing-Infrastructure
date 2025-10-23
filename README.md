@@ -21,3 +21,6 @@ AI-Generated Notes:
 Potential MCQ questions that could be included in the midterm can be found through ```./MCQs/```. They will be linked below as well: 
 
 - [MCQs](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/MCQs/Selection.md): Completion Status: ✅; Total Number of questions: 64
+
+
+![MindMap](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/NotebookLM%20Mind%20Map.png)
