@@ -89,3 +89,20 @@ Task: Creating a VM, for example.
 Big objective function. Big constraints written mathematically as well. I think that what will come in the final is a written problem where you'd have to derive the constraints, the objective, etc... based on the notation. 
 
 A task requiring a VM with 6 cores and 128GB memory cannot be assigned to another VM with less specifications. 
+
+
+## Example from the class: 
+Assume I have two hosts with the following specs: 
+- Host A contains 10 processing elements (PE) and 48GB RAM
+- Host B has 20 PEs and 64GB RAM
+- The cost for using PE/Hour is 1AED and the profit is 0.5AED (PE/Hour)
+- 3 VMs have the following requirements and are to be allocated on the available hosts.
+   - VM1: 5 PE, 16GB
+   - VM2: 10 PE, 24GB
+   - VM3: 5 PE, 24GB
+
+Write the constraints that ensures the allocation of the host PE and RAM resource to meet the minimum requirement of a VM. Provide your answer in a general constraint modeling form. 
+
+Solution: You want the following objective. First, we use an indicator function which will be our decision variable x. 
+
+If a VM is assigned to a host, then x = 1. Otherwise, 0. We want to ensure that 5VM1 + 10VM2 + 5VM3 <= 10 and 5VM1 + 10VM2 + 5VM3 <= 20. Similarly, we have 16VM1 + 24VM2 + 24VM3 <= 48 and <= 64. 
