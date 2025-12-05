@@ -1,6 +1,6 @@
 # Lecture 6: Business Continuity
 
-**IMAGE HERE**
+![BusinessCont](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/BusinessCont.png)
 
 # What is Business Continuity?
 ### Definition
@@ -24,7 +24,7 @@ _Refers to the ability of a cloud service to perform its agreed function accordi
 Service availability (%):
 
 $$
-\mathrm{Service\ availability\ (\%)} =
+\mathrm{Service\ availability\ } =
 \frac{\mathrm{Agreed\ service\ time} - \mathrm{Downtime}}{\mathrm{Agreed\ service\ time}}
 $$
 
@@ -33,14 +33,14 @@ _Agreed service time is the period where the service is supposed to be available
 # Causes of Cloud Service Unavailability
 
 - Application failure
-    - For example, due to catastrophic exceptions caused by bad logic
+    - For example, due to catastrophic exceptions caused by bad logic (like dividing by 0)
 - Data loss
 - Infrastructure component failure
 - Failure of dependent services
 - Data center or site down
 - Refreshing IT infrastructure
 
-# Methods to Achieve Required Cloud Service Availability
+# Methods to Achieve Required Cloud Service Availability (CSA)
 - Building **resilient** cloud infrastructure facilitates meeting the required service availability
 - Building resilient cloud infrastructure requires various high availability solutions
     - Implementing **fault tolerance** mechanisms
@@ -49,21 +49,18 @@ _Agreed service time is the period where the service is supposed to be available
     - Implementing automated cloud service failover --> just to clarify, cloud service failover means to switch to a backup and we want this to be done automatically; for example, network traffic can be switched in the event of a link failure
     - Architecting resilient cloud applications
 
-# Lesson: Building Fault Tolerance Cloud Infrastructure - 1
-This lesson covers the following topics:
-- Avoiding single points of failure
-- Key fault tolerance mechanisms
 
-# Single Points of Failure
+## Single Points of Failure
 _Refers to **any individual component** or aspect of an infrastructure whose **failure can make the entire system** or service **unavailable**._
 - Single points of failure may occur at
     - Component level (copmute, storage, and network)
     - Site or data center level 
-**IMAGE HERE**
 
-# Avoiding Single Points of Failure
+![SinglePointFailure](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/SinglePointFailure.png)
+
+## Avoiding Single Points of Failure
 - Single points of failure can be avoided by implementing fault tolerance mechanisms such as redundancy
-    - Implement redundancy at component level
+    - Implement redundancy at component level (clustering, SANs, link aggregation, NIC teaming, etc...)
         - Compute
         - Storage
         - Network
@@ -74,7 +71,7 @@ _Refers to **any individual component** or aspect of an infrastructure whose **f
 
 # Implementing Redundancy at Component Level
 
-**IMAGE HERE**
+![ImplementingRedundancy](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ImplementingRedundancy.png)
 
 ## How do these techniques protect **compute**?
 - Clustering
@@ -100,7 +97,7 @@ _Refers to **any individual component** or aspect of an infrastructure whose **f
 - Configuring redundnat storage system components
     - Duplicates critical storage parts (e.g., controllers, power supplies, fans, interconnects)  so the failure of any single component does not interrupt access to stored data
  
-# Compute Clustering
+## Compute Clustering
 _A technique where **at least two compute systems** (or nodes) **work together** and are **viewed** as a **single compute system** to provide **high availability** and **load balancing**._
 
 - Enables service failover in the event of compute system failure to another system to minimize or avoid any service outage
@@ -111,17 +108,17 @@ _A technique where **at least two compute systems** (or nodes) **work together**
 
 - Hypervisor cluster is a common clustering implementation in a cloud environment --> cluster VMs basically
 
-# VM Live Migration
+## VM Live Migration
 
-- Running services on VMs are moved from one physical compute system to another without downtime
+- Running services on VMs are moved from one physical compute system to another without downtime (there is some near-zero downtime).
     - Allows scheduled maintenance without any downtime
     - Facilitates load balancing
 
-**IMAGE HERE**
+![VMLiveMigration](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/VMLiveMigration.png)
 
 The image shows two compute systems where the first compute system has two services being migrated to the second compute system *WITHOUT** the first compute system being offline.
 
-# Link and Switch Aggregation
+## Link and Switch Aggregation
 - Link aggregation
     - Combined links between two seitches and also between a switch and a node
     - Enables network traffic failover in the event of a link failure in the aggregation --> when you need to hit a word count
@@ -135,14 +132,14 @@ The image shows two compute systems where the first compute system has two servi
     - Improves node performance by providing more active paths and bandwidth --> what does providing more active paths and bandwidth mean and how does it do these things? So, this means that a node can use many physical uplinks at the same time to the aggregated switches, for load balancing traffic across the links resulting in the effective bandwidth to be the sum of the bandwidths
 
 ### What are the differences/similarities between switch and link aggregation?
-- Link aggregation is at the **port level** (_grouping links between devices_), while switch aggregation works at tge **device level** (_grouping multiple switches into one switch_). Both do aim to increase bandwidth and redundancy and are often used together to aggregate links on an aggregated switch.
+- Link aggregation is at the **port level** (_grouping links between devices_), while switch aggregation works at the **device level** (_grouping multiple switches into one switch_). Both aim to increase bandwidth and redundancy and are often used together to aggregate links on an aggregated switch.
 
 ### What are the differences/similarities between these two and multipathing?
-- Link/switch aggregation work at Layer 2 (Data Link Layer in OSI model) by aggregating physical Ethernet links into one logical connection, whereas multipathing (e.g., MPIO [MultiPath Input Output] for storage) keeps multiple independentg end-to-end paths for load balancing, redundancy, etc.
+- Link/switch aggregation work at Layer 2 (Data Link Layer in OSI model) by aggregating physical Ethernet links into one logical connection, whereas multipathing (e.g., MPIO \[MultiPath Input Output\] for storage) keeps multiple independentg end-to-end paths for load balancing, redundancy, etc.
 
-**IMAGE HERE**
+![LinkSwitchAggregation](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/LinkSwitchAggregation.png)
 
-# NIC Teaming
+## NIC Teaming
 _A link aggregation technique that groups NICs so that they appear as a single. logical NIC to the OS or hypervisor._
 
 - Provides network traffic failover in the event of a NIC/link failure
@@ -151,9 +148,9 @@ _A link aggregation technique that groups NICs so that they appear as a single. 
 
 - NICs within a team can be configured as active and standby
 
-**IMAGE HERE**
+![NICTeaming](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/NICTeaming.png)
 
-# Multipathing
+## Multipathing
 
 - Enables a compute system to use multiple paths for transferring data to a LUN (Logical Unit Number)
 
@@ -161,8 +158,10 @@ _A link aggregation technique that groups NICs so that they appear as a single. 
 
 - Performs load balancing by distributing I/O across active paths
     - Standby paths become active if one or more active paths fail
+ 
+![MultiPath](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/MultiPath.png)
 
-# Storage Resiliency Using Mirrored LUN
+## Storage Resiliency Using Mirrored LUN
 - Mirrored LUN is created using virtualization appliance
     - Each I/O to the LUN is mirrored to the LUNs on the storage system
     - Mirrored LUN is continuously available to the compute system
@@ -174,8 +173,86 @@ Is there a benefit of distributed traffic here?
 - What is going on in the image?
 - The host sees one LUN, a virtualization appliance mirrors all I/Os to two backend LUNs on two separate storage systems, providing continuous availability (and potentially read (not necessarily write) load-balancing) even if one storage system fails.
 
-**IMAGE HERE**
+![StorageRes](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/StorageRes.png)
 
-# Service Availability Zones
+## Service Availability Zones
 - A service availability zone is a location with its own set of resources and isolated from other zones
     - A zone can be a part of a data center or may even be comprised of the whole data center
+    - Enables running mulitple service instances within and across zones to survive data center or site failures.
+    - In the event of outage, the service should seamlessly failover across zones. 
+ 
+- Zones within a particular region are typically connected through low latency network. This enables faster cloud service failover.
+
+
+## Automated Service Failover Across Zoness
+- Ensures robust and consistent failover
+- Enables to meet stringent service levels. Reduces recovery time objective (RTO) --> How long it takes to recover from a failure.
+- Automated failover process primarily depends on:
+    - Replication across zones
+    - Live migration with stretched cluster (zones in different remote locations)
+    - Reliable network infrastructure between zones.
+ 
+- Zones can be configured as active/passive and active/active.
+
+**Active/Passive:** 
+![ActivePassive](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ActivePassive.png)
+We have the replication on standby, not running. In the event of failure, failover happens automatically, standby activates and becomes operational. Replication happens only one way. Only storage.
+
+**Active/Active:**
+![ActiveActive](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/ActiveActive.png)
+Both are running at the same time. The other system has the same services. Both have different services, but then replicate the storage. All the services migrate to the other. Replication happens both ways. Only storage. 
+
+
+## Data protection overview
+- Protecting critical data ensures availability of services.
+    - Seamless server failover requires the availability of data
+- Businesses also implement data protection solutions in order to comply with GRC.
+- Individual services and associated datasets have different business values, require different data protection strategies
+- Two common: Backup and replication.
+
+**Def. Backup:** An additional copy of production data, created and retained for the sole purpose of recovering lost or corrupted data. 
+
+- Recovery point objective (RPO) and time (RTO) are the primary considerations in selecting and implementing a specific backup strategy.
+    - RPO specifies the time interval between two backups. It's the frequency of backups
+    - RTO relates to the time taken to recover data from a backup
+        - RTO influences the type of backup target that should be used
+     
+- To implement successful backup and recovery, service providers need to evaluate the backup methods along with their recovery considerations and retention requirements.
+
+Data is an asset. 
+
+## Guest-Level backup
+
+![GuestLevelBackup](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/GuestLevelBackup.png)
+
+Backup agent is installed on each VM
+- Performs file-level backup and recovery
+- Does not backup the VM configuration files. Because they are the image.
+- Performing backup on multiple VMs on a compute system may consume more resources and lead to resource contention.
+    - Impacts performance of applications running on VMs
+ 
+This is time-consuming. If we have a high RTO then it's okay. Otherwise it's not feasible. We have a backup agent per VM. 
+
+
+## Image-Level Backup
+Snapshot of an image. Creates a copy of the entire virtual disk and configuration data associated with a particular VM. 
+- Backup is saved as a single entity called a VM image.
+    - Provides VM-image level and file-level recovery
+    - No backup agent is required inside the VM to backup
+    - Backup processing is offloaded from VMs to a proxy server.
+ 
+
+## Drivers for Optimizing Backup
+
+![DriversForOptimizing](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/DriversForOptimizing.png)
+
+1. Limited budget
+2. Limited backup window
+3. Network bandwidth constraint
+4. Longer retention period (you need to keep data for longer periods
+
+
+
+
+ 
+
