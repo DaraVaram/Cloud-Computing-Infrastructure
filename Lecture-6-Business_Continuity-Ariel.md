@@ -252,7 +252,102 @@ Snapshot of an image. Creates a copy of the entire virtual disk and configuratio
 4. Longer retention period (you need to keep data for longer periods
 
 
+## Data Deduplication
 
+![Deduplication](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/Deduplication.png)
 
+Def.: The process of detecting and identifying the unique data segments within a given set of data to eliminate redundancy. 
+
+Deduplication process: 
+- Chunk the dataset
+- Identify duplicate chunks
+- Eliminate the redundant chunks.
+
+If you want redundancy, take an additional copy of the **dedpulicated segments**.
+
+Granularity Levels: 
+- File-level dedup:
+    - Detects and removes redundant copies of identical files
+    - Only one copy of the file is stored; subsequent copies are replaced with a pointer to the original file. Does not address the problem of duplicate content inside the files
+- Sub-file level dedup:
+    - Breaks files down into smaller segments
+    - Detects redundant data within and across files
+    - Two methods:
+         - Fixed-length. Issue: small change in a block results in a shift that happens.
+         - Variable-length: A change that happens in a block will be contained within the block.
+     
+**Source-based dedup**: 
+- Eliminates redundant data at the source / backup client
+- Client sends only new and unique segments across the network
+- Reduces storage and network BW requirements
+- Increases overhead on the backup client
+
+At the VM level. It's the compute that generates the files. 
+
+**Target-based dedup**: 
+- Offloads dedup process from the backup client to the storage system
+- Data is dedupped at target either in-line or post-process.
+    - In-line: As the data comes in, identify, dedup, then store the dedup data
+    - Post-process: Data is already in the storage system, then we dedup.
  
 
+## Replication
+Def.: Process of creating an exact copy / replica of the data for ensuring availability of the services. 
+
+- Replica copies are used to restore and restart services if data loss occurs. Based on the SLA for the service being offered, data can be replicated to one or more locations.
+- Can be classified as local replication (snapshot and mirroring), and remote replication (can be sync or async).
+- Helps with high availability, usually done on production data.
+
+
+**Local Replication (Snapshot)**: 
+- A virtual copy of a set of files or volume as they appear in a particular PIT (point in time)
+    - Provides the ability to restore the files or volumes if there is data loss of corruption.
+ 
+- VM snapshot is a common snapshot technique that preserves the state and data of a VM at a specific PIT.
+    - When a snapshot is created, a child virtual disk (delta disk file) is created from the base image (parent virtual disk)
+    - Successive snapshots generate a new child virtual disk from the previous child virtual disk
+    - Snapshots hold only changed blocks.
+ 
+**Remote Replication (Sync.)**
+
+ ![RemoteReplication](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/RemoteReplication.png)
+
+ - Write is committed to both the source and the remote replica before it is ACKed to the compute system
+ - Ensures that the source and replica have identical data at all times. Near-zero RPO. For each write, it happens to the replica as well, but this causes a delay for writing. 
+
+![AsyncRemoteReplication](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/AsyncRemoteReplication.png)
+
+- Write is committed to the source and immediately ACKed to the compute system.
+    - Data is buffered at the source and transmitted to the remote site later.
+    - Replica is behind the source by a finite amount (finite RPO)
+ 
+Replication happens between storage systems. 
+
+## Replication Usecase: DRaaS (disaster recovery as a service)
+- Service provider offers resources to enable consumers to run their IT services in the event of a disaster.
+    - Resources at the service provider location can be dedicated to the consumer or they can be shared.
+ 
+- Replication is a key technique used by the service provider in order to offer DRaaS to the consumers
+- Service provider should design, implement and document a DRaaS solution specific to a customer's infrastructure.
+
+![DRaaS](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/DRaaS.png)
+
+**Normal production operation:**
+- IT services run at the consumer's production data center
+- Replication occurs from the consumer's production environment to the service provider's data center over the network
+    - Data is usually encrypted while replicating to the provider's location.
+ 
+In the provider side, the VM instances are not allocated yet. Because they're at the consumer production data center. 
+
+
+**Business Disruption**
+- Business operations failover to the provider's infrastructure in the event of a disaster at the consumer's data center.
+    - Users at the consumer organization are re-directed to the cloud
+ 
+- Typically, VM instances are created from a pool of compute
+    - Connect replicated storage to each of the newly activated VMs
+
+
+![DRaaSBusinessDisruption](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/DRaaSBusinessDisruption.png)
+
+Now, the VM instances are booted up and we connect the replicated storage to the newly activated VMs. 
