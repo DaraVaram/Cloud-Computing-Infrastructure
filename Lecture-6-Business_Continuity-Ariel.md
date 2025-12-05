@@ -168,7 +168,11 @@ _A link aggregation technique that groups NICs so that they appear as a single. 
     - Mirrored LUN is continuously available to the compute system
         - Even if one of the storage systems is unavailable due to failure
 
-is there a benefit of distributed traffic here?
+Is there a benefit of distributed traffic here?
+- With mirrored LUNs, the host sees a single virtual LUN while a virtualization appliance (or storage software) actually writes each I/O to two backend LUNs on different storage systems; if the configuration is “active-active” or allows both sides to serve reads, read traffic can be spread across both arrays for better throughput, but writes must always go to both sides and be acknowledged, so write performance is limited by latency and the slower side—meaning any traffic-distribution benefit is mostly on reads and is secondary to the primary goal of redundancy and high availability.
+
+- What is going on in the image?
+- The host sees one LUN, a virtualization appliance mirrors all I/Os to two backend LUNs on two separate storage systems, providing continuous availability (and potentially read (not necessarily write) load-balancing) even if one storage system fails.
 
 **IMAGE HERE**
 
