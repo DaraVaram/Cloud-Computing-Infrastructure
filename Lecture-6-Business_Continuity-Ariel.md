@@ -99,5 +99,79 @@ _Refers to **any individual component** or aspect of an infrastructure whose **f
     - Keeps one or more spare disks idle so when an active disks fails, data is automatically rebuilt onto the spare, restoring redundnacy
 - Configuring redundnat storage system components
     - Duplicates critical storage parts (e.g., controllers, power supplies, fans, interconnects)  so the failure of any single component does not interrupt access to stored data
-    - 
-    -  
+ 
+# Compute Clustering
+_A technique where **at least two compute systems** (or nodes) **work together** and are **viewed** as a **single compute system** to provide **high availability** and **load balancing**._
+
+- Enables service failover in the event of compute system failure to another system to minimize or avoid any service outage
+
+- Two common clustering implementations are:
+    - Active/active --> ARIEL'S NOTES: Active derving requests
+    - Active/passive --> ARIEL'S NOTES: waiting for a failure to happen
+
+- Hypervisor cluster is a common clustering implementation in a cloud environment --> cluster VMs basically
+
+# VM Live Migration
+
+- Running services on VMs are moved from one physical compute system to another without downtime
+    - Allows scheduled maintenance without any downtime
+    - Facilitates load balancing
+
+**IMAGE HERE**
+
+The image shows two compute systems where the first compute system has two services being migrated to the second compute system *WITHOUT** the first compute system being offline.
+
+# Link and Switch Aggregation
+- Link aggregation
+    - Combined links between two seitches and also between a switch and a node
+    - Enables network traffic failover in the event of a link failure in the aggregation --> when you need to hit a word count
+    - Enables distribution of network traffic across links in the aggregation
+
+### NOT NEEDED::: What is the difference between link aggregation and trunking?
+- Link aggregation combines multiple physical links into one logical link, whereas trunking aggregates VLAns as one logical link
+
+- Switch aggregation
+    - Provides fault tolerance against switch and link failures --> Does link aggregation also protect against switch failure? Normal link aggregation involves bundling links into a **single switch**, so it only protects against port/cable failure.
+    - Improves node performance by providing more active paths and bandwidth --> what does providing more active paths and bandwidth mean and how does it do these things? So, this means that a node can use many physical uplinks at the same time to the aggregated switches, for load balancing traffic across the links resulting in the effective bandwidth to be the sum of the bandwidths
+
+### What are the differences/similarities between switch and link aggregation?
+- Link aggregation is at the **port level** (_grouping links between devices_), while switch aggregation works at tge **device level** (_grouping multiple switches into one switch_). Both do aim to increase bandwidth and redundancy and are often used together to aggregate links on an aggregated switch.
+
+### What are the differences/similarities between these two and multipathing?
+- Link/switch aggregation work at Layer 2 (Data Link Layer in OSI model) by aggregating physical Ethernet links into one logical connection, whereas multipathing (e.g., MPIO [MultiPath Input Output] for storage) keeps multiple independentg end-to-end paths for load balancing, redundancy, etc.
+
+**IMAGE HERE**
+
+# NIC Teaming
+_A link aggregation technique that groups NICs so that they appear as a single. logical NIC to the OS or hypervisor._
+
+- Provides network traffic failover in the event of a NIC/link failure
+
+- Distributes network traffic across NICs
+
+- NICs within a team can be configured as active and standby
+
+**IMAGE HERE**
+
+# Multipathing
+
+- Enables a compute system to use multiple paths for transferring data to a LUN (Logical Unit Number)
+
+- Enables failover by redirecting I/O from a failed path to another active path
+
+- Performs load balancing by distributing I/O across active paths
+    - Standby paths become active if one or more active paths fail
+
+# Storage Resiliency Using Mirrored LUN
+- Mirrored LUN is created using virtualization appliance
+    - Each I/O to the LUN is mirrored to the LUNs on the storage system
+    - Mirrored LUN is continuously available to the compute system
+        - Even if one of the storage systems is unavailable due to failure
+
+is there a benefit of distributed traffic here?
+
+**IMAGE HERE**
+
+# Service Availability Zones
+- A service availability zone is a location with its own set of resources and isolated from other zones
+    - A zone can be a part of a data center or may even be comprised of the whole data center
