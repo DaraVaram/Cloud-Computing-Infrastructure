@@ -122,3 +122,49 @@ GRC work together to enforce policies and minimize risks.
 - Governance is the authority for making the policies
 - Risk management invovles identifying resources that should not be accessed by certain users to preserve CIA
 - Compliance management assures that policies are being enforced by implementing mechanisms. 
+
+**Governance:** Determine the purpose, strategy and operational rules by which companies are directed and managed. 
+- Enterprise governance is based on business strategy.
+    - IT governance is a subset discipline of enterprise governance. The objective of IT governance is to determine desired behavior to achieve IT's strategic goals. .
+- IT governance requires defining roles and responsibilities for:
+    - Directing, controlling and executing decisions
+    - Determining information required to make decisions
+    - Handling exceptions
+
+**Def. Risk Management:** Risk is the effect of uncertainty on business objectives. Risk management is a systematic process of assessing its assets, placing a realistic valuation on each asset, and creating a risk profile that is rationalized for each information asset across the business. 
+
+![RiskManagement](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/RiskManagement.png)
+
+There are four key steps: 
+1. Identify the source of threats that gives rise to risks. This should be performed before building cloud infrastructure
+2. Determine likelihood of a risk, which helps to identify appropriate controls
+3. Planning and deploying security mechanisms, helps mitigate risks / minimize impact
+4. Continuous observation of exsiting risks, ensuring proper control of security mechanisms.
+
+**Def. Compliance:** Act of adhering to, and demonstrating adherence to, external laws and regulations, corporate policies and procedures, server provider's own demands, consumers' demands, and/or the demands of participating cloud providers (in case of hybrid cloud and cloud brokers).
+
+Two types of compliance policies control IT operations: 
+- Internal policy compliance
+    - controls the nature of IT operations within an organization
+    - Require maintaining smae compliance when operating in cloud
+- External policy compliance
+    - Controls the nature of IT operations related to the flow of data out of organization
+    - May differ based upon the type of information, and business
+ 
+**Def. Auditing:** A process that determins the validity and reliability of information about the enforcement of controls presented by a provider. Audit also provides an assessment of the cloud provider's control mechanisms and their ability to provide the consumers, the logs required to verify the mechanisms. 
+- Performed by internal auditors or external auditors
+- Cloud auditor is a role that audits the cloud infrastructure. They evaluate a provider in terms of security controls and privacy.
+
+
+Security audit: 
+- Determine how consumers' data is segregated from each other
+- Evaluate security mechanisms and ensure they are in accordance with provider's internal policies
+- Determine how identity management is performed
+- Determine whether adequate DR processes are available
+- Evaluate whether appropriate governance processes are available.
+
+Privacy audit: 
+- Evaluate use of encryption to protect consumers' data
+- Determine level of access provider's employees have to consumers' resources and data
+- Evaluate processes for controlling consumers' access
+- Evaluate whether data retention and destruction practices are in accordance with privacy laws. 
