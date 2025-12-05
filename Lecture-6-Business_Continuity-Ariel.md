@@ -315,6 +315,7 @@ Def.: Process of creating an exact copy / replica of the data for ensuring avail
  - Write is committed to both the source and the remote replica before it is ACKed to the compute system
  - Ensures that the source and replica have identical data at all times. Near-zero RPO. For each write, it happens to the replica as well, but this causes a delay for writing. 
 
+**Remote Replication (Async.)**
 ![AsyncRemoteReplication](https://github.com/DaraVaram/Cloud-Computing-Infrastructure/blob/main/figures/AsyncRemoteReplication.png)
 
 - Write is committed to the source and immediately ACKed to the compute system.
