@@ -121,3 +121,4 @@ The goal here is to identify and block anomalies. Parameters to learn about a us
 GRC work together to enforce policies and minimize risks. 
 - Governance is the authority for making the policies
 - Risk management invovles identifying resources that should not be accessed by certain users to preserve CIA
+- Compliance management assures that policies are being enforced by implementing mechanisms. 
